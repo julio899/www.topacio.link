@@ -6,6 +6,42 @@
 	--color-text-bibrant: rgb(19 71 87);
 }
 
+/*Loader bg*/
+.loader-bg{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #00000070;
+    z-index: 10;
+    /* top: 0;*/
+}
+/*estilo custom btns*/
+.deg-orange,
+.deg-blue{
+	margin-top: 3%;
+}
+.deg-orange span:nth-child(3){
+    background: #c10f0f;
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #c10f0f);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px black;
+    font-weight: 700;
+    padding: 0.3em;
+}
+
+.deg-blue span:nth-child(2){
+    background: #134274;
+ }
+.deg-blue span:nth-child(3){
+	background: #43cea2;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px black;
+  font-weight: 700;
+}
+
 /* para variacion de color filter: hue-rotate(360deg) */
 /*animation: logoAnimation 5s 0.5s infinite ease-out;*/
 #logo-topacio {

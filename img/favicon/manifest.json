@@ -4,7 +4,7 @@
     "short_name": "Topacio Trade",
     "url":"https://www.topacio.trade",
     "id":"/?homescreen=1",
-    "start_url": "https://www.topacio.trade",
+    // "start_url": "https://www.topacio.trade/",
     "icons": [
         {
             "src": "/img/favicon/android-icon-36x36.png",
@@ -51,9 +51,6 @@
         }
     ],
     "related_applications": [
-        {
-            "platform": "web"
-        },
         {
             "platform": "web3",
             "url": "https://www.topacio.trade"

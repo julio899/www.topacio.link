@@ -150,6 +150,32 @@ var ParticleEngine = (function() {
 		}
 	}
 
+
+	ParticleEngine.prototype.remove = function()
+	{	
+		this._auxiliar = this.canvas_id;
+		document.getElementById(this.canvas_id).remove();
+	};
+
+	ParticleEngine.prototype.restarting = function()
+	{
+
+			// var _obj = new ParticleEngine(this._auxiliar);
+			// createjs.Ticker.addEventListener("tick", updateCanvas);
+			// window.addEventListener('resize', resizeCanvas, false);
+
+			// function updateCanvas(){
+			// 	_obj.render();
+			// }
+
+			// function resizeCanvas(){
+			// 	_obj.resize();
+			// }
+			// return _obj;
+			
+			return new ParticleEngine(this.canvas_id);
+	};
+
 	return ParticleEngine;
 
 }());
@@ -211,4 +237,9 @@ var particles
 	function resizeCanvas(){
 		particles.resize();
 	}
+
+	// console.log({particles});
 }());
+
+
+// remover particles.stage.removeAllChildren()
