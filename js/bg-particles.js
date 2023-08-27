@@ -1,3 +1,27 @@
+
+// detect mobile device
+const isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+
 ////////////////////////// PARTICLE ENGINE ////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,6 +51,13 @@ var ParticleEngine = (function() {
 						{ellipseWidth:100, ellipseHeight:80, alpha:0.2, offsetX:80, offsetY:-50, color:"#2ae8d8"}];
 
 		this.stage.compositeOperation = _ParticleEngine.compositeStyle;
+
+		this.stage.runing = true;
+
+		this.stop = function(){
+			this.stage.runing = false;
+			this.stage.removeAllChildren();
+		}
 
 
 		function drawBgLight()
@@ -232,6 +263,10 @@ var particles
 
 	function updateCanvas(){
 		particles.render();
+
+		if(isMobile.any()!=null && particles.stage.runing){
+			particles.stop();
+		}
 	}
 
 	function resizeCanvas(){
@@ -240,28 +275,6 @@ var particles
 
 	// console.log({particles});
 }());
-
-// detect mobile device
-const isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
 
 
 // remover particles.stage.removeAllChildren()
