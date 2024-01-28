@@ -343,11 +343,11 @@ var ParticleEngine = (function () {
     // window.addEventListener('resize', resizeCanvas, false);
 
     // function updateCanvas(){
-    // 	_obj.render();
+    //  _obj.render();
     // }
 
     // function resizeCanvas(){
-    // 	_obj.resize();
+    //  _obj.resize();
     // }
     // return _obj;
 
@@ -404,24 +404,26 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength) {
 
 var particles
 ;(function () {
-  particles = new ParticleEngine('projector')
-  createjs.Ticker.addEventListener('tick', updateCanvas)
-  window.addEventListener('resize', resizeCanvas, false)
+  if (createjs) {
+    particles = new ParticleEngine('projector')
+    createjs.Ticker.addEventListener('tick', updateCanvas)
+    window.addEventListener('resize', resizeCanvas, false)
 
-  function updateCanvas() {
-    particles.render()
+    function updateCanvas() {
+      particles.render()
 
-    if (
-      isMobile.any() != null &&
-      particles.stage.runing &&
-      window.location.pathname.includes('/alpha')
-    ) {
-      particles.stop()
+      if (
+        isMobile.any() != null &&
+        particles.stage.runing &&
+        window.location.pathname.includes('/alpha')
+      ) {
+        particles.stop()
+      }
     }
-  }
 
-  function resizeCanvas() {
-    particles.resize()
+    function resizeCanvas() {
+      particles.resize()
+    }
   }
 
   // console.log({particles});
