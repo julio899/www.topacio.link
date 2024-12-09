@@ -404,27 +404,33 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength) {
 
 var particles
 ;(function () {
-  if (createjs) {
-    particles = new ParticleEngine('projector')
-    createjs.Ticker.addEventListener('tick', updateCanvas)
-    window.addEventListener('resize', resizeCanvas, false)
-
-    function updateCanvas() {
-      particles.render()
-
-      if (
-        isMobile.any() != null &&
-        particles.stage.runing &&
-        window.location.pathname.includes('/alpha')
-      ) {
-        particles.stop()
+  
+  window.addEventListener("load", function (event) {
+    if (createjs) {
+      particles = new ParticleEngine('projector')
+      createjs.Ticker.addEventListener('tick', updateCanvas)
+      window.addEventListener('resize', resizeCanvas, false)
+  
+      function updateCanvas() {
+        particles.render()
+  
+        if (
+          isMobile.any() != null &&
+          particles.stage.runing &&
+          window.location.pathname.includes('/alpha')
+        ) {
+          particles.stop()
+        }
+      }
+  
+      function resizeCanvas() {
+        particles.resize()
       }
     }
 
-    function resizeCanvas() {
-      particles.resize()
-    }
-  }
+  });
+
+  
 
   // console.log({particles});
 })()
