@@ -21,7 +21,7 @@
   "theme_color": "#252d34",
   "shortcuts": [
     {
-      "name": "topacio.link",
+      "name": "topacio.trade",
       "short_name": "TopacioTrade",
       "description": "Topacio Trade | Descentralización con Web3, Blockchain y NFT | Trading Scalping y Automatización",
       "url": "/today?source=pwa",
