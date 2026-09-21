@@ -412,14 +412,25 @@ var particles
       window.addEventListener('resize', resizeCanvas, false)
   
       function updateCanvas() {
-        particles.render()
-  
-        if (
-          isMobile.any() != null &&
-          particles.stage.runing &&
-          window.location.pathname.includes('/alpha')
-        ) {
-          particles.stop()
+        // ALPHA = fondo plano: pausar el motor (no solo taparlo) en cualquier
+        // dispositivo. El ticker reevalúa el pathname en cada frame, así que
+        // la navegación SPA alterna el estado sin tocar el router.
+        var enAlpha = window.location.pathname.indexOf('/alpha') !== -1
+
+        if (enAlpha) {
+          if (particles.stage.runing) {
+            particles.stop()
+            document.body.classList.add('bokeh-off')
+          }
+          return
+        }
+
+        if (!particles.stage.runing) {
+          // volver a una página pública: recrear el motor sobre el mismo canvas
+          particles = particles.restarting()
+          document.body.classList.remove('bokeh-off')
+        } else {
+          particles.render()
         }
       }
   
