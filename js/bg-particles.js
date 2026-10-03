@@ -35,7 +35,7 @@ var ParticleEngine = (function () {
   function ParticleEngine(canvas_id) {
     // enforces new
     if (!(this instanceof ParticleEngine)) {
-      return new ParticleEngine(args)
+      return new ParticleEngine(canvas_id)
     }
 
     var _ParticleEngine = this
@@ -338,19 +338,6 @@ var ParticleEngine = (function () {
   }
 
   ParticleEngine.prototype.restarting = function () {
-    // var _obj = new ParticleEngine(this._auxiliar);
-    // createjs.Ticker.addEventListener("tick", updateCanvas);
-    // window.addEventListener('resize', resizeCanvas, false);
-
-    // function updateCanvas(){
-    //  _obj.render();
-    // }
-
-    // function resizeCanvas(){
-    //  _obj.resize();
-    // }
-    // return _obj;
-
     return new ParticleEngine(this.canvas_id)
   }
 
@@ -404,13 +391,12 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength) {
 
 var particles
 ;(function () {
-  
-  window.addEventListener("load", function (event) {
+  window.addEventListener('load', function (event) {
     if (createjs) {
       particles = new ParticleEngine('projector')
       createjs.Ticker.addEventListener('tick', updateCanvas)
       window.addEventListener('resize', resizeCanvas, false)
-  
+
       function updateCanvas() {
         // ALPHA = fondo plano: pausar el motor (no solo taparlo) en cualquier
         // dispositivo. El ticker reevalúa el pathname en cada frame, así que
@@ -433,17 +419,10 @@ var particles
           particles.render()
         }
       }
-  
+
       function resizeCanvas() {
         particles.resize()
       }
     }
-
-  });
-
-  
-
-  // console.log({particles});
+  })
 })()
-
-// remover particles.stage.removeAllChildren()
